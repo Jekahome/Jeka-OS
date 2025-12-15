@@ -1,9 +1,11 @@
-# How to create your own OS
+# How to create your own OS (Bare Bones)
 
-[The little book about OS development](https://littleosbook.github.io/)
-
-[OSDev Wiki — техническая библия для самописных ОС](https://wiki.osdev.org/Expanded_Main_Page)
-
+Sources:
+* [OSDev Wiki — техническая библия для самописных ОС](https://wiki.osdev.org/Expanded_Main_Page)
+* [The little book about OS development](https://littleosbook.github.io/)
+* [cirosantilli/x86-bare-metal-examples](https://github.com/cirosantilli/x86-bare-metal-examples)
+* [phil-opp/blog_os](https://github.com/phil-opp/blog_os)
+* [nanobyte (youtube)](https://www.youtube.com/@nanobyte-dev/playlists)
 
 ## Multiboot и MBR
 
