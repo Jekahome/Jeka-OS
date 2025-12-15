@@ -1,0 +1,18 @@
+# --- bochsrc.txt ---
+# bochs -f bochsrc.txt
+# find /usr/share/bochs -name '*BIOS*'
+# sudo apt install bochsbios
+# apt-file search /usr/share/bochs/BIOS-bochs
+# -------------------
+megs: 32
+display_library: x 
+# ИСПРАВЛЕНИЕ: Используем точное имя файла, которое предоставил bochsbios
+romimage: file=/usr/share/bochs/BIOS-bochs-latest 
+vgaromimage: file=/usr/share/bochs/VGABIOS-lgpl-latest
+floppya: 1_44=os_image.bin, status=inserted
+boot: a
+log: bochs.out
+cpu: count=1, model=bx_generic
+# --------------------
+# bochs -f bochsrc.txt
+# 

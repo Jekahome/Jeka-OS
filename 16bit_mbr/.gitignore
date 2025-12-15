@@ -1,0 +1,7 @@
+/isodir
+boot.o
+kernel.o
+myos.bin
+loader.bin
+bochs.out
+qemu.log

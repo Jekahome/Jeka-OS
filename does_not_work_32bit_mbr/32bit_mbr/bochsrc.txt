@@ -1,0 +1,10 @@
+# --- bochsrc.txt (Рабочая конфигурация) ---
+megs: 32
+display_library: x 
+romimage: file=/usr/share/bochs/BIOS-bochs-latest 
+vgaromimage: file=/usr/share/bochs/VGABIOS-lgpl-latest
+floppya: 1_44=os_image.bin, status=inserted
+boot: a
+log: bochs.out
+cpu: count=1, model=pentium_mmx, reset_on_triple_fault=true
+# --------------------

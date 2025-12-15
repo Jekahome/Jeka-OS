@@ -1,0 +1,7 @@
+/isodir
+boot.o
+kernel.o
+myos.bin
+myos.iso
+kernel_with_headers.elf
+qemu.log

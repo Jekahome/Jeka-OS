@@ -1,0 +1,6 @@
+megs: 32
+romimage: file=/usr/share/bochs/BIOS-bochs-latest
+floppya: 1_44=os_image.bin, status=inserted
+boot: floppy
+cpu: count=1
+display_library: x

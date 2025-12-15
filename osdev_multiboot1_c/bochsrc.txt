@@ -1,0 +1,34 @@
+# ===== Memory & CPU =====
+megs: 128
+cpu: count=1, ips=4000000
+
+# ===== BIOS & VGA =====
+romimage: file=/usr/share/bochs/BIOS-bochs-latest
+vgaromimage: file=/usr/share/bochs/VGABIOS-lgpl-latest
+
+# ===== Boot device =====
+boot: cdrom
+ata0: enabled=1
+ata0-master: type=cdrom, path="myos.iso", status=inserted
+
+# ===== Display =====
+display_library: x        # графический вывод через X11
+# display_library: sdl    # альтернативно SDL, если X11 не работает
+
+# ===== Keyboard & Mouse =====
+keyboard: type=mf
+mouse: type=none
+
+# ===== Serial port logging =====
+com1: enabled=1, mode=file, dev=/tmp/serial.log
+
+# ===== Plugins (Bochs автоматически подгружает) =====
+
+# ===== Error handling =====
+panic: action=ask
+error: action=report
+info: action=report
+debug: action=report
+
+# ===== Optional =====
+log: bochs.log           # полный лог Bochs
