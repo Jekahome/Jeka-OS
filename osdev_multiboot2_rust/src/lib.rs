@@ -31,6 +31,8 @@ fn terminal_write(s: &str) {
 // поэтому мы используем атрибут #[no_mangle] и extern "C".
 // Она соответствует сигнатуре kernel_main, которую мы вызываем в boot.s.
 
+static HELLO: &[u8] = b"Hello World!";
+
 #[no_mangle]
 pub extern "C" fn kernel_main(multiboot_magic: u32, _multiboot_addr: u32) -> ! {
     /*  
@@ -41,37 +43,47 @@ pub extern "C" fn kernel_main(multiboot_magic: u32, _multiboot_addr: u32) -> ! {
         так как он минимизирует количество сгенерированного кода и избегает проблем 
         с неявным выравниванием и порядком байтов.
     */
-    // Адрес видеобуфера VGA
-    let vga_buffer_ptr = 0xb8000 as *mut u16; // Используем u16, чтобы записывать сразу 2 байта (символ + цвет)
+    /*  
+        // Первый вариант
+        // Адрес видеобуфера VGA
+        let vga_buffer_ptr = 0xb8000 as *mut u16; // Используем u16, чтобы записывать сразу 2 байта (символ + цвет)
 
-    // Символ: Пробел (0x20) и Атрибут: Серо-на-черном (0x07)
-    let blank_char: u16 = 0x0720; // 0x07 (цвет) << 8 | 0x20 (пробел)
+        // Символ: Пробел (0x20) и Атрибут: Серо-на-черном (0x07)
+        let blank_char: u16 = 0x0720; // 0x07 (цвет) << 8 | 0x20 (пробел)
 
-    // Общее количество ячеек: 80 * 25 = 2000
-    let mut i = 0;
-    while i < 2000 {
-        // Используем write_volatile, чтобы компилятор не удалил этот код
-        unsafe {
-            write_volatile(vga_buffer_ptr.offset(i as isize), blank_char);
-        }
-        i += 1;
-    }
-
-    /* 
-        // Не рабочий вариант!
-        // Очистка экрана VGA
-        let vga_buffer_ptr = 0xb8000 as *mut u8;
-        
-        // Цикл для очистки 80x25 символов (2000 ячеек * 2 байта/ячейка = 4000 байт)
-        for i in 0..2000 {
+        // Общее количество ячеек: 80 * 25 = 2000
+        let mut i = 0;
+        while i < 2000 {
+            // Используем write_volatile, чтобы компилятор не удалил этот код
             unsafe {
-                // Записываем пробел (0x20)
-                *vga_buffer_ptr.offset((i * 2) as isize) = b' ';
-                // Записываем атрибут (0x07 = серо-на-черном)
-                *vga_buffer_ptr.offset((i * 2 + 1) as isize) = 0x07;
+                write_volatile(vga_buffer_ptr.offset(i as isize), blank_char);
             }
+            i += 1;
         }
     */
+
+    // Второй вариант
+    let vga_buffer_ptr = 0xb8000 as *mut u8;
+
+    // Очистка экрана VGA
+    // Цикл для очистки 80x25 символов (2000 ячеек * 2 байта/ячейка = 4000 байт)
+    for i in 0..2000 {
+        unsafe {
+            // Записываем пробел (0x20)
+            *vga_buffer_ptr.offset(i as isize * 2) = b' ';
+            
+        }
+    } 
+
+    for (i, &byte) in HELLO.iter().enumerate() {
+        unsafe {
+            *vga_buffer_ptr.offset(i as isize * 2) = byte;
+            *vga_buffer_ptr.offset(i as isize * 2 + 1) = 0xb;// 0xb - светло-голубой
+        }
+    }
+ 
+
+    
 
     // Проверка Multiboot2 Header
     // Multiboot2 magic number - 0x36D76289
