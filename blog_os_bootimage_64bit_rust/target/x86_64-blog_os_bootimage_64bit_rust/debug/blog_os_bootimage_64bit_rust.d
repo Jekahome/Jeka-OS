@@ -1,1 +1,0 @@
-/home/jeka/Projects/JEKA_OS/blog_os_bootimage_64bit_rust/target/x86_64-blog_os_bootimage_64bit_rust/debug/blog_os_bootimage_64bit_rust: /home/jeka/Projects/JEKA_OS/blog_os_bootimage_64bit_rust/src/main.rs

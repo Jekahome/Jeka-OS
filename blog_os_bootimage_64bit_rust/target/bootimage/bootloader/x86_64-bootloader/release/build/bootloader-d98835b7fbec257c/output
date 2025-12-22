@@ -1,7 +1,0 @@
-cargo:rerun-if-changed=/home/jeka/Projects/JEKA_OS/blog_os_bootimage_64bit_rust/Cargo.toml
-cargo:rustc-link-search=native=/home/jeka/Projects/JEKA_OS/blog_os_bootimage_64bit_rust/target/bootimage/bootloader/x86_64-bootloader/release/build/bootloader-d98835b7fbec257c/out
-cargo:rustc-link-lib=static=kernel_bin-blog_os_bootimage_64bit_rust
-cargo:rerun-if-env-changed=KERNEL
-cargo:rerun-if-env-changed=KERNEL_MANIFEST
-cargo:rerun-if-changed=/home/jeka/Projects/JEKA_OS/blog_os_bootimage_64bit_rust/target/x86_64-blog_os_bootimage_64bit_rust/debug/blog_os_bootimage_64bit_rust
-cargo:rerun-if-changed=build.rs
