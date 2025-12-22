@@ -16,7 +16,8 @@
     ]
   },
   
-  "features": "+sse,+sse2",
+  "features": "-mmx,-sse,+soft-float",
+  "rustc-abi": "x86-softfloat",
   "disable-redzone": true,
   "panic-strategy": "abort",
   
