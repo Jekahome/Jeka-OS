@@ -1,0 +1,13 @@
+ 
+# blog_os_bootimage_last2_64bit_rust/Cargo.toml
+[workspace]
+members = [
+    "kernel",
+    "tools/create_images"
+]
+
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+panic = "abort"
