@@ -1,0 +1,6 @@
+/isodir
+/target
+boot.o
+myos.bin
+myos.iso
+qemu.log

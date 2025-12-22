@@ -1,4 +1,4 @@
-//! src/main.rs
+// src/main.rs
 
 #![no_std] // не подключайте стандартную библиотеку Rust
 #![no_main] // отключить все точки входа уровня Rust
@@ -13,6 +13,8 @@ fn panic(_info: &PanicInfo) -> ! {
 
 static HELLO: &[u8] = b"Hello World!";
 
+// Эта функция является точкой входа, поскольку компоновщик ищет функцию.  
+// по умолчанию называется `_start`
 #[unsafe(no_mangle)] // не искажайте название этой функции
 pub extern "C" fn _start() -> ! {
     let vga_buffer = 0xb8000 as *mut u8;
@@ -24,8 +26,6 @@ pub extern "C" fn _start() -> ! {
         }
     }
 
-    // Эта функция является точкой входа, поскольку компоновщик ищет функцию.  
-    // по умолчанию называется `_start`
     #[allow(clippy::empty_loop)]
     loop {}
 }

@@ -1,0 +1,23 @@
+# Cargo.toml
+
+[package]
+name = "myos"
+version = "0.1.0"
+authors = ["Ваше Имя <ваша_почта@example.com>"]
+edition = "2021"
+
+# --- Спецификация для ядра (Freestanding) ---
+
+[lib]
+# Мы собираем не исполняемый файл (бинарник), а библиотеку (.rlib),
+# которая затем будет слинкована с нашим ассемблерным кодом и линкером LD.
+# Это позволяет Rust не включать свою стандартную функцию main и прочие runtime-зависимости.
+crate-type = ["staticlib"]
+
+# используется при `cargo build`
+[profile.dev]
+panic = "abort" # отключить размотку стека при панике
+
+# используется при `cargo build --release`
+[profile.release]
+panic = "abort" # отключить размотку стека при панике
