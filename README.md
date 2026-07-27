@@ -1,4 +1,4 @@
-# How to create your own OS (Bare Bones)
+# How to create your own OS (minimal configuration) for the IBM PC (x86) platform
 
 Sources:
 * [OSDev Wiki — техническая библия для самописных ОС](https://wiki.osdev.org/Expanded_Main_Page)
